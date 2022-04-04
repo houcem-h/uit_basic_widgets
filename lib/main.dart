@@ -64,6 +64,26 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.deepOrangeAccent,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.deepOrangeAccent,
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const <Widget>[
+              IconButton(
+                  onPressed: null,
+                  icon: Icon(Icons.add_location_alt, color: Colors.white),
+              ),
+              IconButton(
+                  onPressed: null,
+                  icon: Icon(Icons.arrow_forward, color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
