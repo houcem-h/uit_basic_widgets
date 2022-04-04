@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _likeThis,
         backgroundColor: Colors.deepOrangeAccent,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
