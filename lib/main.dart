@@ -32,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Icon _heart = Icon(Icons.favorite_border, color: Colors.white);
   bool _like = false;
+  int _selectedIndex = 0;
+  String _displayText = "0: Home Screen";
 
   void _likeThis() {
     setState(() {
@@ -45,6 +47,31 @@ class _MyHomePageState extends State<MyHomePage> {
       _like = !_like;
     });
   }
+
+  void _clickedItemOnNavigationBar(int ind) {
+    setState(() {
+      _selectedIndex = ind;
+      switch (_selectedIndex) {
+        case 0:
+          {
+            _displayText = '$_selectedIndex : Home Screen';
+          }
+          break;
+        case 1:
+          {
+            _displayText = '$_selectedIndex : Account Screen';
+          }
+          break;
+        case 2:
+          {
+            _displayText = '$_selectedIndex : Statistics Screen';
+          }
+          break;
+      }
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +85,43 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '$_displayText',
+              style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 40),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: _heart,
         onPressed: _likeThis,
         backgroundColor: Colors.deepOrangeAccent,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.deepOrangeAccent,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Colors.white),
+            label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle, color: Colors.white),
+            label: 'Account'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assessment, color: Colors.white),
+            label: 'Statistics'
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _clickedItemOnNavigationBar,
+      ),
+      /*bottomNavigationBar: BottomAppBar(
         color: Colors.deepOrangeAccent,
         shape: const CircularNotchedRectangle(),
         child: Container(
@@ -83,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-      ),
+      ),*/
     );
   }
 }
