@@ -58,6 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: _heart,
+        onPressed: _likeThis,
+        backgroundColor: Colors.deepOrangeAccent,
+      ),
     );
   }
 }
