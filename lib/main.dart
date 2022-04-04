@@ -30,13 +30,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Icon _heart = Icon(Icons.favorite_border, color: Colors.white);
+  bool _like = false;
 
+  void _likeThis() {
+    setState(() {
+      /*if(_like) {
+        _heart  = Icon(Icons.favorite, color: Colors.white);
+      } else {
+        _heart  = Icon(Icons.favorite_border, color: Colors.white);
+      }*/
+      // ou bien
+      _heart = _like ? const Icon(Icons.favorite, color: Colors.white) : const Icon(Icons.favorite_border, color: Colors.white);
+      _like = !_like;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('UIT Flutter 2022'),
         backgroundColor: Colors.deepOrangeAccent,
+        actions: <Widget>[
+          IconButton(
+              onPressed: _likeThis,
+              icon: _heart,
+          ),
+        ],
       ),
     );
   }
