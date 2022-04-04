@@ -35,7 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('UIT Flutter 2022'),
+        backgroundColor: Colors.deepOrangeAccent,
       ),
     );
   }
