@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _like = false;
   int _selectedIndex = 0;
   String _displayText = "0: Home Screen";
+  int? _selectedItem = 0;
 
   void _likeThis() {
     setState(() {
@@ -93,6 +94,10 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_displayText',
               style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 40),
             ),
+            Center(
+              child: Text(_selectedItem.toString(),
+                style: TextStyle(color: Colors.red, fontSize: 40),),
+            ),
           ],
         ),
       ),
@@ -141,6 +146,45 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),*/
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          /*const EdgeInsets.only(left: 10, right: 1.1, top: 1.1, bottom: 1.1),*/
+          children: [
+            const DrawerHeader(
+              padding: EdgeInsets.all(50),
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+              child: Text('Choose Item'),
+            ),
+            ListTile(
+              selected: _selectedItem == 0 ? true : false,
+              selectedColor: Colors.red,
+              selectedTileColor: const Color.fromRGBO(200, 255, 252, 100),
+              title: const Text('first item'),
+              onTap: () {
+                setState(() {
+                  _selectedItem = 0;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              selected: _selectedItem == 1 ? true : false,
+              selectedColor: Colors.red,
+              selectedTileColor: const Color.fromRGBO(200, 255, 252, 100),
+              title: const Text('second item'),
+              onTap: () {
+                setState(() {
+                  _selectedItem = 1;
+                });
+                Navigator.pop(context);
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }
